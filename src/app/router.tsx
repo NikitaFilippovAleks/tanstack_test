@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 
 import { HomePage } from '@/pages/Home';
-import { CharactersPage } from '@/pages/Characters';
+import { CharactersPage } from '@/pages/characters';
 
 import { ROUTER_PATHS } from '@/shared/constants/routes';
 import { MainLayout } from '@/shared/ui/layouts/main';
