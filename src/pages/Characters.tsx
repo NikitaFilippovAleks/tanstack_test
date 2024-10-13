@@ -1,42 +1,34 @@
-import { api } from "@/shared/api";
-import { ICharactersResponse } from "@/shared/api/types/characters-response";
-import { API_URLS } from "@/shared/constants/api";
 import { ROUTER_PATHS } from "@/shared/constants/routes"
-import { ICharacter } from "@/shared/models/Character";
-import { Box, List, ListItem, Typography } from "@mui/material"
-import { useEffect, useState } from "react";
+import { CharactersList } from "@/widgets/characters/List";
+import { CharactersShow } from "@/widgets/characters/Show";
+import { Box } from "@mui/material"
 import { Link } from "react-router-dom"
 
 export const CharactersPage = () => {
-  const [characters, setCharacters] = useState<ICharacter[]>([]);
-
-  useEffect(() => {
-    getCh()
-  }, []);
-
-  const getCh = async () => {
-    const { data } = await api.get<ICharactersResponse>(API_URLS.character);
-    console.log('data:', data?.results)
-    if (data) {
-      setCharacters(data.results);
-    }
-  }
-
-  useEffect(() => {
-    console.log('characters:', characters)
-  }, [characters]);
-
   return (
-    <Box>
-      <Link to={ROUTER_PATHS.HOME}>Home</Link>
+    <Box
+      sx={{
+        display: 'flex',
+        flex: 1,
+        flexDirection: 'column'
+      }}
+    >
+      <Box mb={2}>
+        <Link to={ROUTER_PATHS.HOME}>Home</Link>
+      </Box>
 
-      <List>
-        {characters.map(char => (
-          <ListItem key={char.id}>
-            <Typography>{char.name}</Typography>
-          </ListItem>
-        ))}
-      </List>
+      <Box
+        sx={{
+          display: 'flex',
+          flex: 1,
+          gap: 2,
+          overflow: 'hidden'
+        }}
+      >
+        <CharactersList />
+
+        <CharactersShow />
+      </Box>
     </Box>
   )
 }

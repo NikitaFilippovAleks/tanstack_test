@@ -4,9 +4,10 @@ import { Outlet } from "react-router-dom";
 export const MainLayout = () => (
   <Box
     sx={{
-      width: '100vw',
-      height: '100vh',
-      backgroundColor: 'black'
+      display: 'flex',
+      flex: 1,
+      backgroundColor: 'black',
+      p: 2
     }}
   >
     <Outlet />
