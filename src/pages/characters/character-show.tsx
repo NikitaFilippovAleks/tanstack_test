@@ -1,4 +1,5 @@
 import { getCharacter } from "@/shared/api/actions/get-character";
+import { API_URLS } from "@/shared/constants/api";
 import { Avatar, Box, CircularProgress, Stack, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 
@@ -7,7 +8,7 @@ interface IProps {
 }
 
 export const CharacterShow = ({ charId }: IProps) => {
-  const { isPending, isError, data, error } = useQuery({ queryKey: ['character', charId], queryFn: () => getCharacter(charId)})
+  const { isPending, isError, data, error } = useQuery({ queryKey: [API_URLS.characters.show(charId)], queryFn: getCharacter})
 
   if (isError) {
     return <Typography>{error.message}</Typography>
