@@ -1,11 +1,11 @@
 import { API_URLS } from "@/shared/constants/api";
 import { api } from "..";
-import { ICharactersResponse } from "../types/characters-response";
 import { IError } from "../types/error";
 import { handleErrors } from "@/shared/utils/handle-errors";
+import { ICharacter } from "@/shared/models/Character";
 
-export const getCharacters = async () => {
-  const response = await api.get<ICharactersResponse, IError>(API_URLS.characters.list);
+export const getCharacter = async (charId: string) => {
+  const response = await api.get<ICharacter, IError>(API_URLS.characters.show(charId));
 
   if (!response.ok) {
     throw new Error(handleErrors(response));

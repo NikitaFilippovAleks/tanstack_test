@@ -1,8 +1,8 @@
 import { ROUTER_PATHS } from "@/shared/constants/routes"
-import { CharactersShow } from "@/widgets/characters/Show";
 import { Box } from "@mui/material"
 import { Link } from "react-router-dom"
 import { LeftBlock } from "./left-block";
+import { RightBlock } from "./right-block";
 
 export const CharactersPage = () => {
   return (
@@ -27,7 +27,7 @@ export const CharactersPage = () => {
       >
         <LeftBlock />
 
-        <CharactersShow />
+        <RightBlock />
       </Box>
     </Box>
   )

@@ -1,9 +1,12 @@
 import { Box } from "@mui/material"
 import { pink } from "@mui/material/colors"
 import { useSearchParams } from "react-router-dom";
+import { CharacterShow } from "./character-show";
 
-export const CharactersShow = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+export const RightBlock = () => {
+  const [searchParams] = useSearchParams();
+
+  const charId = searchParams.get('id');
 
   return (
     <Box
@@ -14,7 +17,7 @@ export const CharactersShow = () => {
         p: 1
       }}
     >
-      SHOW: {searchParams.get('id')}
+      {charId && <CharacterShow charId={charId} />}
     </Box>
   )
 }

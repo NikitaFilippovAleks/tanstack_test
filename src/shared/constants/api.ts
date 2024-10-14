@@ -1,3 +1,6 @@
 export const API_URLS = {
-  character: 'character'
+  characters: {
+    list: 'character',
+    show: (charId: string) => `character/${charId}`
+  }
 }
